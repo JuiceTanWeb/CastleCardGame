@@ -109,7 +109,7 @@ function playCard(cardval){
       }
     }
     if (difficulty > 2){
-alert("this is hard")
+alert("The ai is not programmed yet for this mode.")
     }
     else {
       var e;
@@ -119,7 +119,7 @@ alert("this is hard")
         opponentcards.shift();
       }
       else{
-        alert(opponentcards)
+        
       for (o=0; o < opponentcards.length;o++){
         if (lowestvalidcard == null){
           if (higharchy[Number(middlecard.slice(1,3))]<= 
