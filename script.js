@@ -60,6 +60,7 @@ card.setAttribute("width",138);
 card.setAttribute("height",188);
 card.setAttribute("onclick","playCard(this.id)")
 card.setAttribute("onmouseover", "javascript: width = 165; height = 226;" )
+card.setAttribute("onmouseleave", "javascript: width = 138; height = 188")
 document.getElementById("playercards").appendChild(card);
 }
 function drawcard(){
