@@ -103,6 +103,7 @@ function playCard(cardval){
             deck = shuffle(deck)
             middlecards = []
             document.getElementById('mid').remove();
+            return
 
           }
 
@@ -163,8 +164,16 @@ alert("The ai is not programmed yet for this mode.")
             deck = deck.concat(middlecards);
             deck = shuffle(deck);
             middlecards = []
-            document.getElementById('mid').remove();
-
+            lowestvalidcard = opponentcards[0]
+            for (e = 0; e < opponentcards.length; e++){
+          if (higharchy[Number(lowestvalidcard.slice(1,3))] > higharchy[Number(opponentcards[e].slice(1,3))] ){
+          lowestvalidcard = opponentcards[e];
+          }
+        }
+        document.getElementById("mid").src = "carddeck/"+lowestvalidcard+".png";
+          middlecard= lowestvalidcard;
+          middlecards.push(lowestvalidcard);
+          opponentcards.splice(Number(opponentcards.indexOf(lowestvalidcard)),1);
           }
       }
           
