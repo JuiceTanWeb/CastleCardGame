@@ -27,6 +27,7 @@ function sleep(milliseconds) {
     }
   }
 }
+var aiplay = document.getElementById("aiplay")
 var higharchy = [0,11,12,1,2,3,4,5,6,7,13,8,9,10]
 var lowestvalidcard = null
 var middlecards = []
@@ -110,6 +111,7 @@ function playCard(cardval){
         return
       }
     }
+    lowestvalidcard = null
     if (difficulty > 2){
 alert("The ai is not programmed yet for this mode.")
     }
@@ -154,6 +156,7 @@ alert("The ai is not programmed yet for this mode.")
           opponentcards.splice(Number(opponentcards.indexOf(lowestvalidcard)),1);
 
           document.getElementById("aihand").innerHTML = opponentcards.length
+          aiplay.innerHTML = lowestvalidcard  
           if (Number(middlecard.slice(1,3)) == 10){
             middlecard = null;
             deck = deck.concat(middlecards);
