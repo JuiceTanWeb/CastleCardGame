@@ -1,4 +1,4 @@
-var difficulty = prompt("Enter difficulty from 1 to 3") //Determine Difficulty.
+var difficulty = 1
 function shuffle(array) { //shuffle algorithm
   var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -136,14 +136,15 @@ alert("The ai is not programmed yet for this mode.")
         lowestvalidcard = opponentcards[o]}}}
       if (lowestvalidcard == null){
         while (lowestvalidcard == null){
-          var cardselected = deck[0];
+        var cardselected = deck[0];
         opponentcards.push(deck[0]);
         deck.shift();
         if (higharchy[Number(middlecard.slice(1,3))]<= 
         higharchy[Number(cardselected.slice(1,3))]){
-          lowestvalidcard = selectedcard;
+          lowestvalidcard = cardselected;
         }
-        }}
+        }
+        }
         else{
         for (e = 0; e < opponentcards.length; e++){
           if (higharchy[Number(lowestvalidcard.slice(1,3))] > higharchy[Number(opponentcards[e].slice(1,3))] >= higharchy[Number(middlecard.slice(1,3))]){
