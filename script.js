@@ -160,16 +160,17 @@ alert("The ai is not programmed yet for this mode.")
           document.getElementById("aihand").innerHTML = opponentcards.length
           aiplay.innerHTML = lowestvalidcard  
           if (Number(middlecard.slice(1,3)) == 10){
-            middlecard = null;
             deck = deck.concat(middlecards);
             deck = shuffle(deck);
             middlecards = []
             lowestvalidcard = opponentcards[0]
+           sleep(1000)
             for (e = 0; e < opponentcards.length; e++){
           if (higharchy[Number(lowestvalidcard.slice(1,3))] > higharchy[Number(opponentcards[e].slice(1,3))] ){
           lowestvalidcard = opponentcards[e];
           }
         }
+        
         document.getElementById("mid").src = "carddeck/"+lowestvalidcard+".png";
           middlecard= lowestvalidcard;
           middlecards.push(lowestvalidcard);
