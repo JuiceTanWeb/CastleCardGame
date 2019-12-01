@@ -20,7 +20,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-var difficulty = 1
+
+var difficulty = 1;
 function shuffle(array) { //shuffle algorithm
   var currentIndex = array.length, temporaryValue, randomIndex;
 
