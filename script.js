@@ -21,7 +21,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-var difficulty = 1;
+var difficulty = 1
 function shuffle(array) { //shuffle algorithm
   var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -97,6 +97,199 @@ function drawcard(){
   document.getElementById("playercards").appendChild(card);
   mycards.push(deck[0])
   deck.shift();
+
+}
+function castle1(){
+  if (mycards.length < 1){
+if (middlecard == null){
+   var mid = document.createElement("img");
+    mid.src = "carddeck/" +pcastle1+".png";
+    mid.setAttribute("value",pcastle1)
+    mid.setAttribute("id","mid")
+    mid.setAttribute("width",138);
+    mid.setAttribute("height",188);
+    document.getElementById("playdeck").appendChild(mid);
+    document.getElementById(pcastle1).remove();
+    middlecard = pcastle1
+    var playedcard = mycards.indexOf(pcastle1)
+    pcastle1 = null
+    document.getElementById("pcastle1").remove();
+    }
+    else {
+      if (higharchy[Number(pcastle1.slice(1,3))] >= higharchy[Number(middlecard.slice(1,3))]){
+        document.getElementById("mid").src = "carddeck/"+pcastle1+".png";
+        middlecard = pcastle1
+        middlecards.push(pcastle1)
+        var playedcard = mycards.indexOf(pcastle1)
+        mycards.splice(playedcard,1);
+        document.getElementById(cardval).remove();
+        if (Number(middlecard.slice(1,3)) == 10){
+            middlecard = null
+            deck = deck.concat(middlecards)
+            deck = shuffle(deck)
+            middlecards = []
+            document.getElementById('mid').remove();
+            return
+
+          }
+
+      }
+     
+        mycards = mycards.concat(middlecards);
+        middlecard = null
+        middlecards = []
+        document.getElementById('mid').remove();
+      }
+    }}
+    lowestvalidcard = null
+    if (difficulty > 2){
+alert("The ai is not programmed yet for this mode.")
+    }
+    else {
+      if (opponentcards.length != 0){
+      var e;
+      var opponentmove;
+      if (middlecard == null){
+        middlecard == opponentcards[0];
+        opponentcards.shift();
+      }
+      else{
+      
+      for (o=0; o < opponentcards.length;o++){
+        if (lowestvalidcard == null){
+          if (higharchy[Number(middlecard.slice(1,3))]<= 
+        higharchy[Number(opponentcards[o].slice(1,3))]){
+          lowestvalidcard = opponentcards[o]
+        }}
+        else{
+        if (higharchy[Number(middlecard.slice(1,3))]<= 
+        higharchy[Number(opponentcards[o].slice(1,3))] && higharchy[Number(opponentcards[0].slice(1,3))] < higharchy[Number(lowestvalidcard.slice(1,3))]){
+        lowestvalidcard = opponentcards[o]}}}
+      if (lowestvalidcard == null){
+        while (lowestvalidcard == null){
+        var cardselected = deck[0];
+        opponentcards.push(deck[0]);
+        deck.shift();
+        if (higharchy[Number(middlecard.slice(1,3))]<= 
+        higharchy[Number(cardselected.slice(1,3))]){
+          lowestvalidcard = cardselected;
+        }
+        }
+        }
+        else{
+        for (e = 0; e < opponentcards.length; e++){
+          if (higharchy[Number(lowestvalidcard.slice(1,3))] > higharchy[Number(opponentcards[e].slice(1,3))] >= higharchy[Number(middlecard.slice(1,3))]){
+          lowestvalidcard = opponentcards[e];
+          }
+        }}
+         document.getElementById("mid").src = "carddeck/"+lowestvalidcard+".png";
+          middlecard= lowestvalidcard;
+          middlecards.push(lowestvalidcard);
+          opponentcards.splice(Number(opponentcards.indexOf(lowestvalidcard)),1);
+
+          document.getElementById("aihand").innerHTML = opponentcards.length
+          aiplay.innerHTML = lowestvalidcard  
+          if (Number(middlecard.slice(1,3)) == 10){
+            deck = deck.concat(middlecards);
+            deck = shuffle(deck);
+            middlecards = []
+            lowestvalidcard = opponentcards[0]
+           sleep(1000)
+            for (e = 0; e < opponentcards.length; e++){
+          if (higharchy[Number(lowestvalidcard.slice(1,3))] > higharchy[Number(opponentcards[e].slice(1,3))] ){
+          lowestvalidcard = opponentcards[e];
+          }
+        }
+        
+        document.getElementById("mid").src = "carddeck/"+lowestvalidcard+".png";
+          middlecard= lowestvalidcard;
+          middlecards.push(lowestvalidcard);
+          opponentcards.splice(Number(opponentcards.indexOf(lowestvalidcard)),1);
+          }
+      }
+          
+
+    
+    }
+ 
+    }
+ 
+
+   var e;
+      var opponentmove;
+      if (middlecard == null){
+          if (ocastle1 != null && ocastle1 != undefined ){
+            
+          }
+          else if (ocastle2 != null && ocastle2 != undefined){
+
+          }
+          else if (ocastle3 != null && ocastle3 != undefined){
+            
+          }
+          else{}
+        opponentcards.shift();
+      }
+      else{
+      
+      for (o=0; o < opponentcards.length;o++){
+        if (lowestvalidcard == null){
+          if (higharchy[Number(middlecard.slice(1,3))]<= 
+        higharchy[Number(opponentcards[o].slice(1,3))]){
+          lowestvalidcard = opponentcards[o]
+        }}
+        else{
+        if (higharchy[Number(middlecard.slice(1,3))]<= 
+        higharchy[Number(opponentcards[o].slice(1,3))] && higharchy[Number(opponentcards[0].slice(1,3))] < higharchy[Number(lowestvalidcard.slice(1,3))]){
+        lowestvalidcard = opponentcards[o]}}}
+      if (lowestvalidcard == null){
+        while (lowestvalidcard == null){
+        var cardselected = deck[0];
+        opponentcards.push(deck[0]);
+        deck.shift();
+        if (higharchy[Number(middlecard.slice(1,3))]<= 
+        higharchy[Number(cardselected.slice(1,3))]){
+          lowestvalidcard = cardselected;
+        }
+        }
+        }
+        else{
+        for (e = 0; e < opponentcards.length; e++){
+          if (higharchy[Number(lowestvalidcard.slice(1,3))] > higharchy[Number(opponentcards[e].slice(1,3))] >= higharchy[Number(middlecard.slice(1,3))]){
+          lowestvalidcard = opponentcards[e];
+          }
+        }}
+         document.getElementById("mid").src = "carddeck/"+lowestvalidcard+".png";
+          middlecard= lowestvalidcard;
+          middlecards.push(lowestvalidcard);
+          opponentcards.splice(Number(opponentcards.indexOf(lowestvalidcard)),1);
+
+          document.getElementById("aihand").innerHTML = opponentcards.length
+          aiplay.innerHTML = lowestvalidcard  
+          if (Number(middlecard.slice(1,3)) == 10){
+            deck = deck.concat(middlecards);
+            deck = shuffle(deck);
+            middlecards = []
+            lowestvalidcard = opponentcards[0]
+           sleep(1000)
+            for (e = 0; e < opponentcards.length; e++){
+          if (higharchy[Number(lowestvalidcard.slice(1,3))] > higharchy[Number(opponentcards[e].slice(1,3))] ){
+          lowestvalidcard = opponentcards[e];
+          }
+        }
+        
+        document.getElementById("mid").src = "carddeck/"+lowestvalidcard+".png";
+          middlecard= lowestvalidcard;
+          middlecards.push(lowestvalidcard);
+          opponentcards.splice(Number(opponentcards.indexOf(lowestvalidcard)),1);
+          }
+      
+          
+
+    
+    
+ 
+
 
 }
 function playCard(cardval){
@@ -206,13 +399,4 @@ alert("The ai is not programmed yet for this mode.")
     }
  
 }
-   setInterval(function(){ document.getElementById("aihand").innerHTML = opponentcards.length;
-;
-if (opponentcards.length == 0){
-  alert ("Ai wins.")
-  location.reload();
-}
-if (mycards.length == 0){
-  alert ("You win.")
-  location.reload();
-} }, 1000);
+   

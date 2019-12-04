@@ -8,9 +8,10 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-   <center><button id = "newgame"  onclick = "javascript:location.reload();">New Game</button>
+    <center><button id = "newgame"  onclick = "javascript:location.reload();">New Game</button>
     <br>
     <h1>Cards in AI's Hand: </h1><h1 id = "aihand"></h1>
+    <h1>Card the AI is supposed to play</h1><h1 id = "aiplay"></h1>
     <div id = "opponentcards"></div>
     <image class = "transitionup" src = "cardreverse.png" id = "ocastle1">
       <image class = "transitionup" src = "cardreverse.png" style = "float:right" id = "ocastle2">
@@ -18,11 +19,11 @@
         <br>
         <br><br><br><br><br><image src = "cardreverse.png" id = "drawdeck" onclick = "drawcard()" onmouseover = "javascript: width = 165; height = 226" onmouseleave = "javascript: width = 138; height = 188;"> <div id = "playdeck"></div>
           <br>
-        <br><br><br><br><br> <image src = "cardreverse.png" id = "pcastle1" onmouseover = "javascript: width = 165; height = 226" onmouseleave = "javascript: width = 138; height = 188;">
-      <image src = "cardreverse.png" style = "float:right" id = "pcastle2" onmouseover = "javascript: width = 165; height = 226" onmouseleave = "javascript: width = 138; height = 188;">
+        <br><br><br><br><br> <image src = "cardreverse.png" id = "pcastle1" onmouseover = "javascript: width = 165; height = 226" onmouseleave = "javascript: width = 138; height = 188;" onclick = "castle1()">
+      <image src = "cardreverse.png" style = "float:right" id = "pcastle2" onmouseover = "javascript: width = 165; height = 226" onmouseleave = "javascript: width = 138; height = 188;" onclick =>
       <image src = "cardreverse.png" style = "float:left" id = "pcastle3" onmouseover = "javascript: width = 165; height = 226" onmouseleave = "javascript: width = 138; height = 188;">
-          <div id = "playercards"></div></image>
-          <a href = "instructions.html"><button>Need Help?</button></a>
-          <script src="script.js"></script>
+        <div id = "playercards"></div>
+          <a href = "instructions.html"><button>Instructions</button></a>
+    <script src="script.js"></script>
   </body>
 </html>
