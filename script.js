@@ -51,15 +51,15 @@ function sleep(milliseconds) {
   }
 }
 var aiplay = document.getElementById("aiplay")
-var higharchy = [0,11,12,1,2,3,4,5,6,7,13,8,9,10]
+var higharchy = [0,11,12,1,2,3,4,5,6,7,13,8,9,10] //Determines value of cards.
 var lowestvalidcard = null
 var middlecards = []
 var deck = ["c01","c02","c03","c04","c05","c06","c07","c08","c09","c10","c11","c12","c13","h01","h02","h03","h04","h05","h06","h07","h08","h09","h10","h11","h12","h13","s01","s02","s03","s04","s05","s06","s07","s08","s09","s10","s11","s12","s13","d01","d02","d03","d04","d05","d06","d07","d08","d09","d10","d11","d12","d13"];
 deck = shuffle(deck);
-deck = shuffle(deck)
+deck = shuffle(deck);
 var middlecard = null
-var ocastle1 = deck[0]
-deck.shift()
+var ocastle1 = deck[0] //Set castle
+deck.shift() //Remove from deck
 var ocastle2 = deck[0]
 deck.shift()
 var ocastle3 = deck[0]
@@ -87,7 +87,7 @@ card.setAttribute("onmouseover", "javascript: width = 165; height = 226;" )
 card.setAttribute("onmouseleave", "javascript: width = 138; height = 188")
 document.getElementById("playercards").appendChild(card);
 }
-function drawcard(){
+function drawcard(){ //Drawing cards into your deck.
   var card = document.createElement("img");
   card.src = "carddeck/" + deck[0] +".png";
   card.setAttribute("id",deck[0])
@@ -99,7 +99,7 @@ function drawcard(){
   deck.shift();
 
 }
-function castle1(){
+function castle1(){ //When player plays Castle 1. Look below for refrence code.
   if (mycards.length < 1){
 if (middlecard == null){
    var mid = document.createElement("img");
@@ -299,60 +299,60 @@ function playCard(cardval){
     mid.setAttribute("value",cardval)
     mid.setAttribute("id","mid")
     mid.setAttribute("width",138);
-    mid.setAttribute("height",188);
+    mid.setAttribute("height",188); //Create middle card if no middle card is present
     document.getElementById("playdeck").appendChild(mid);
     document.getElementById(cardval).remove();
     middlecard = cardval
     var playedcard = mycards.indexOf(cardval)
-    mycards.splice(playedcard,1);}
+    mycards.splice(playedcard,1);} //Remove played card
     else {
       if (higharchy[Number(cardval.slice(1,3))] >= higharchy[Number(middlecard.slice(1,3))]){
-        document.getElementById("mid").src = "carddeck/"+cardval+".png";
+        document.getElementById("mid").src = "carddeck/"+cardval+".png"; //Replace middle card as needed.
         middlecard = cardval
         middlecards.push(cardval)
         var playedcard = mycards.indexOf(cardval)
-        mycards.splice(playedcard,1);
+        mycards.splice(playedcard,1); //Remove played card
         document.getElementById(cardval).remove();
-        if (Number(middlecard.slice(1,3)) == 10){
+        if (Number(middlecard.slice(1,3)) == 10){ //If played card is a 10.
             middlecard = null
-            deck = deck.concat(middlecards)
-            deck = shuffle(deck)
-            middlecards = []
+            deck = deck.concat(middlecards) //Cards in the middle get put back in deck.
+            deck = shuffle(deck) //Deck gets shuffled
+            middlecards = [] //Middlecards is reset.
             document.getElementById('mid').remove();
-            return
+            return //Wait for user input
 
           }
 
       }
       else{
-        return
+        return //Invalid play
       }
     }
     lowestvalidcard = null
     if (difficulty > 2){
-alert("The ai is not programmed yet for this mode.")
+alert("The ai is not programmed yet for this mode.") //Later feature
     }
     else {
       var e;
       var opponentmove;
       if (middlecard == null){
-        middlecard == opponentcards[0];
+        middlecard == opponentcards[0];//Set middlecard to the first card of the AI if no card is present. 
         opponentcards.shift();
       }
       else{
         
-      for (o=0; o < opponentcards.length;o++){
-        if (lowestvalidcard == null){
+      for (o=0; o < opponentcards.length;o++){ //Repeat for every card
+        if (lowestvalidcard == null){ //Checks if lowestvalidcard is already set. If set, then the script moves on.
           if (higharchy[Number(middlecard.slice(1,3))]<= 
-        higharchy[Number(opponentcards[o].slice(1,3))]){
+        higharchy[Number(opponentcards[o].slice(1,3))]){ // If card is a valid play.
           lowestvalidcard = opponentcards[o]
         }}
         else{
         if (higharchy[Number(middlecard.slice(1,3))]<= 
         higharchy[Number(opponentcards[o].slice(1,3))] && higharchy[Number(opponentcards[0].slice(1,3))] < higharchy[Number(lowestvalidcard.slice(1,3))]){
-        lowestvalidcard = opponentcards[o]}}}
+        lowestvalidcard = opponentcards[o]}}} //Checks for better play
       if (lowestvalidcard == null){
-        while (lowestvalidcard == null){
+        while (lowestvalidcard == null){ //Draws cards until valid play is found
         var cardselected = deck[0];
         opponentcards.push(deck[0]);
         deck.shift();
