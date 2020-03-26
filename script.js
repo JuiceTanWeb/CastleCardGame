@@ -244,7 +244,7 @@ alert("The ai is not programmed yet for this mode.")
       if (lowestvalidcard == null){
         while (lowestvalidcard == null){
         var cardselected = deck[0];
-        opponentcards.push(deck[0];);
+        opponentcards.push(deck[0]);
         deck.shift();
         if (higharchy[Number(middlecard.slice(1,3))]<= 
         higharchy[Number(cardselected.slice(1,3))]){
